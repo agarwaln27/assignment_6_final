@@ -1,0 +1,574 @@
+body {
+    margin: 1%;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+
+/*********** HOME PAGE & NAV BAR ************/
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+}
+
+li{
+    float:left;
+}
+
+.topnav a {
+    list-style-type: none;
+    margin:0;
+    padding: 0;
+    overflow: hidden;
+    float: left;
+    display: inline;
+    width:100px
+    margin-right:20px;
+}
+
+.topnavWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#cart{
+    display:inline;
+    /*float:right;*/
+    width:50px;
+    position: relative;
+    float: right;
+}
+
+.responsive {
+    width: 100%;
+    height: auto;
+}
+
+.bottomnav a {
+    font-family: 'Roboto Slab', serif;
+    list-style-type: none;
+    margin-bottom: 10px;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+    float: left;
+    display: block;
+    color: deeppink;
+    padding: 14px 16px;
+    text-decoration: none;
+    border: 1px solid #bbb;
+    text-align:center;
+}
+
+.bottomnav {
+    text-align:center;
+    left:50%;
+}
+
+.header {
+    text-align:center;
+}
+
+.bottomnav a:hover {
+    background-color: deeppink;
+    color:white
+}
+
+/* Highlight current link */
+
+body#allbuns a#allbunsnav {
+    color:white;
+    background-color:deeppink;
+}
+
+.mainpic a {
+    width: 50%;
+    margin: 1% 0% 0%;
+    padding: 1%;
+}
+
+.mainpic-container {
+    position:relative;
+    text-align:center;
+}
+
+.see-all {
+    position:absolute;
+    bottom: 40px;
+    left: 50%;
+}
+
+.see-all a{
+    font-family: 'Roboto Slab', serif, bold;
+    color: deeppink;
+    text-decoration: none;
+    background-color: white;
+    padding: 10px;
+}
+
+/*********** ALL CINNAMON BUNS PAGE ************/
+
+.wrapper {
+    display: flex;
+    flex-wrap:wrap;
+    padding: 10px 4px;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 50px 50px;
+    width: 120%;
+    height: auto;
+    overflow: hidden;
+}
+
+.thumbnail {
+    width: 25%;
+    position: relative;
+    padding: 20px;
+    min-height: 200px;
+    overflow: hidden;
+    text-align:center;
+}
+.thumbnail img {
+    max-width: 100%;
+    display: block;
+    position: absolute;
+    max-height: 200px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    margin: 5px;
+    text-align:center;
+    margin:20px auto;
+    font-size: 12px;
+}
+
+.thumbnail a {
+    margin: 0px 50px;
+    display: inline-block;
+    text-decoration:none;
+    color:black;
+    text-align: center;
+}
+
+/*********** PRODUCT DETAIL PAGE ************/
+
+.detailcontainer {
+    max-width: 1200px;
+    padding: 15px;
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 100%
+}
+
+.left-column{
+    width: 65%;
+    display: inline-block;
+}
+
+.right-column {
+    width: 35%;
+    position: fixed;
+    left:40%;
+    top:24%;
+}
+
+/* Left Column */
+.left-column a{
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.left-column img {
+    width: 50%;
+    height: auto;
+    left: 0;
+    top: 0;
+}
+
+/* Product Description */
+.product-description {
+    border-bottom: 1px solid #E1E8EE;
+    margin-bottom: 20px;
+    }
+
+.product-description h1 {
+    font-weight: 200;
+    font-size: 32px;
+    color: #43484D;
+    margin-top: 32px;
+}
+.product-description p {
+    font-size: 16px;
+    font-weight: 300;
+    color: #86939E;
+    line-height: 24px;
+}
+
+.glazing {
+    padding-top: 10px;
+}
+
+.myButton {
+    background-color: deeppink;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/** SHOPPING CART B **/
+
+.CheckoutButton {
+    background-color: deeppink;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+
+#myTable{
+    border: 1px solid black;
+}
+
+.left-column img.cart-item-img {
+    width: 60px;
+}
+
+#cart.length {
+  position: absolute;
+  display: none;
+  top: -10px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: deeppink;
+  color: white;
+  text-align: center;
+}
+
+#cart {
+
+}
+
+/*********** SHOPPING CART PAGE A ************
+
+*{
+    box-sizing:border-box;
+}
+
+.shopping-cart {
+    width: 750px;
+    height: 423px;
+    margin: 80px auto;
+    background: #FFFFFF;
+    box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+    border-radius: 6px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+  height: 60px;
+  border-bottom: 1px solid #E1E8EE;
+  padding: 20px 30px;
+  color: #5E6977;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.item {
+  padding: 20px 30px;
+  height: 120px;
+  display: flex;
+}
+
+.item:nth-child(3) {
+  border-top:  1px solid #E1E8EE;
+  border-bottom:  1px solid #E1E8EE;
+}
+
+.buttons {
+  position: relative;
+  padding-top: 30px;
+  margin-right: 60px;
+}
+.delete-btn,
+.like-btn {
+  display: inline-block;
+  Cursor: pointer;
+}
+.delete-btn {
+  width: 18px;
+  height: 17px;
+  background: url(&quot;delete-icn.svg&quot;) no-repeat center;
+}
+
+.like-btn {
+  position: absolute;
+  top: 9px;
+  left: 15px;
+  background: url('twitter-heart.png');
+  width: 60px;
+  height: 60px;
+  background-size: 2900%;
+  background-repeat: no-repeat;
+}
+
+.image {
+  margin-right: 50px;
+}
+
+Let’s add some basic style to  product name and description.
+.description {
+  padding-top: 10px;
+  margin-right: 60px;
+  width: 115px;
+}
+
+.description span {
+  display: block;
+  font-size: 14px;
+  color: #43484D;
+  font-weight: 400;
+}
+
+.description span:first-child {
+  margin-bottom: 5px;
+}
+.description span:last-child {
+  font-weight: 300;
+  margin-top: 8px;
+  color: #86939E;
+}
+.quantity {
+  padding-top: 20px;
+  margin-right: 60px;
+}
+.quantity input {
+  -webkit-appearance: none;
+  border: none;
+  text-align: center;
+  width: 32px;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 300;
+}
+
+button[class*=btn] {
+  width: 30px;
+  height: 30px;
+  background-color: #E1E8EE;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+.minus-btn img {
+  margin-bottom: 3px;
+}
+.plus-btn img {
+  margin-top: 2px;
+}
+
+button:focus,
+input:focus {
+  outline:0;
+}
+
+.total-price {
+  width: 83px;
+  padding-top: 27px;
+  text-align: center;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 300;
+}
+
+@media (max-width: 800px) {
+  .shopping-cart {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+  .item {
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .image img {
+    width: 50%;
+  }
+  .image,
+  .quantity,
+  .description {
+    width: 100%;
+    text-align: center;
+    margin: 6px 0;
+  }
+  .buttons {
+    margin-right: 20px;
+  }
+}
+
+/*********** SHOPPING CART PAGE ***********/
+
+.shopping-cart{
+    margin-top: 0px;
+    padding: 10px 30px 30px 20px;
+}
+
+label{
+    color: $color-label;
+}
+
+/*Table Column Settings*/
+.product-removal {
+    float: left;
+    width: 9%;
+}
+
+.product-image {
+    float: left;
+    width: 20%;
+}
+
+.product-name {
+    float: left;
+    width: 37%;
+}
+
+.product-price {
+    float: left;
+    width: 12%;
+}
+
+.product-quantity {
+    float: left;
+    width: 10%;
+}
+
+.product-line-price {
+    float: left;
+    width: 12%;
+}
+
+/* clearfix*/
+.shopping-cart, .column-labels, .product, .totals-item{
+    @extend .group;
+}
+
+/* dollar signs*/
+.product .product-price:before, .product .product-line-price:before, .totals-value:before {
+  content: '$';
+}
+
+/* column headers*/
+.column-labels{
+    label{
+        margin-top: 20px;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid $color-border;
+    }
+
+    .product-image, .product-name, .product-removal{
+    text-indent: -9999px;
+    }
+}
+
+/* product entires*/
+.product{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $color-border;
+
+    .product-image{
+        text-align: center;
+        img{
+            width: 100px;
+        }
+    }
+
+    .product-name{
+        magin-right:20px;
+        margin: 5px 20px 5px 0;
+        line-height:1.4em;
+        font-family: $font-bold;
+        }
+    }
+
+    .product-quantity{
+        input{
+            width: 40px;
+        }
+    }
+
+    .remove-product{
+        border: 0;
+        padding: 4px 4px;
+        background-color: deeppink;
+        color: black;
+        font-size: 12px;
+        border-radius: 3px;
+    }
+    .remove-product:hover{
+        background-color: hotpink;
+    }
+}
+
+/* totals*/
+.totals {
+    .totals-item {
+        float: right;
+        clear: both;
+        width: 100%;
+        margin-bottom: 10px;
+
+    label {
+        float: left;
+        clear: both;
+        width: 79%;
+        text-align: right;
+    }
+
+    .totals-value {
+        float: right;
+        width: 21%;
+        text-align: right;
+    }
+}
+
+    .totals-item-total {
+        font-family: $font-bold;
+  }
+}
+
+.checkout {
+    float: right;
+    border: 0;
+    margin-top: 20px;
+    padding: 6px 25px;
+    background-color: #6b6;
+    color: #fff;
+    font-size: 25px;
+    border-radius: 3px;
+}
+
+.checkout:hover {
+    background-color: #494;
+}
+
+
