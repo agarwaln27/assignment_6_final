@@ -245,21 +245,36 @@ body#allbuns a#allbunsnav {
     width: 60px;
 }
 
-#cart.length {
-  position: absolute;
-  display: none;
-  top: -10px;
-  left: -10px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: deeppink;
-  color: white;
-  text-align: center;
+.cart-price{
+  flex: display;
 }
 
-#cart {
+#total-price{
+  position: relative;
+  top: 25px;
+}
 
+.cart {
+  position:relative;
+
+}
+
+.cart-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    background: #fff;
+    color: #000;
+    border-radius: 50%;
+    opacity: 0;
+    box-shadow: 0px 0px 5px rgba(0,0,0,.25)
+}
+.cart-badge.active {
+    opacity: 1;
 }
 
 /*********** SHOPPING CART PAGE A ************

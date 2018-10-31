@@ -14,7 +14,7 @@ function addToCart() {
         var img = $("#bunpic");
         var quantity = quantityElement.value;
         var glazing = glazingElement.value;
-        var price = $("#price").attr("data-price");
+        var price = 3;
         var image = null;
         if (img) {
             image = $(img).attr('src');
@@ -25,6 +25,7 @@ function addToCart() {
             quantity: quantity,
             glazing: glazing,
             price: price,
+            uid: 'uid_' + Math.floor(Math.random() * 10e8)
         };
         console.log(roll);
         WriteToStorage(roll);
@@ -38,6 +39,7 @@ function WriteToStorage(item){
     currentStorage.push(item);
     localStorage.setItem('indexBun', JSON.stringify(currentStorage));
     indexBun++;
+    //renderCartPrice();
 }
 
 function ReadFromStorage() {
@@ -72,6 +74,7 @@ function addRowToCart() {
     for (var i = data_saved.length - 1; i >= 0; i--) {
         var roll = data_saved[i];
         var row = table.insertRow(-1);
+        row.setAttribute("data-roll-uid", data_saved[i].uid);
         var deleteCell = row.insertCell(0);
         var imageCell = row.insertCell(1);
         var nameCell = row.insertCell(2);
@@ -82,18 +85,28 @@ function addRowToCart() {
         var deleteButton = document.createElement('deleteButton');
         deleteButton.text = "X";
         deleteButton.setAttribute("id", "deleteButton");
-        deleteButton.setAttribute("onclick", deleteRow(this));
+        deleteButton.setAttribute('data-uid', data_saved[i].uid);
         deleteCell.appendChild(deleteButton);
         deleteCell.style.width="5%";
 
-        deleteCell.innerHTML = `<button>x</button>`;
+        deleteCell.innerHTML = `<button data-uid="${data_saved[i].uid}" class="delete-btn">x</button>`;
         imageCell.innerHTML = `<img class="cart-item-img" src="${roll.image}" />`;
         nameCell.innerHTML = roll.name;
         quantityCell.innerHTML = roll.quantity;
         glazingCell.innerHTML = roll.glazing;
-        priceCell.innerHTML = roll.price;
+        priceCell.innerHTML = `$${roll.price * parseInt(roll.quantity)}`;
     }
-}
+    $('.delete-btn').click(function(e){
+        var uid = $(this).attr('data-uid');
+        if (uid) {
+             var cart = ReadFromStorage();
+             cart = cart.filter(x => x.uid !== uid);
+             localStorage.setItem('indexBun', JSON.stringify(cart));
+             $(`[data-roll-uid="${uid}"]`).remove();
+             renderCartPrice();
+        }
+    });
+    }
 }
 
 function displayResult()
@@ -110,9 +123,11 @@ function deleteRow(r) {
 }
 
 function priceChange(){
-  var quantityBuns = document.getElementByIdId('quantity');
+}
+
+var quantityBuns = document.getElementById('quantity');
   var costDiv = document.getElementById('price');
-  quantityBuns.onchange = function() {
+  quantityBuns && (quantityBuns.onchange = function() {
     var value = quantityBuns.value;
     console.log('Quantity changed');
     console.log(value);
@@ -121,8 +136,7 @@ function priceChange(){
     var newCostString = '$' + newCost;
 
     price.innerHTML = newCostString;
-  }
-}
+  })
 
 var glazeSelect = document.getElementById("glazing");
 if (glazeSelect) {
@@ -143,5 +157,34 @@ if (glazeSelect) {
 }
 }
 
+function renderCartPrice(){
+    var totalCart = 0;
+    var badge = document.getElementById('cart-badge');
+    if (badge) {
+        badge.classList.remove('active');
+        badge.innerHTML = 0;
+    }
+    var cart = ReadFromStorage();
+    if (cart && cart.length > 0) {
+      if (badge) {
+        badge.classList.add('active');
+        badge.innerHTML = cart.length;
+      }
+    }
+    /*for (var i=0; i < cart.length; i++) {
+      var item = cart[i];
+      console.log(item)
+      var amount = roll.quantity;
+      var price = roll.price;
+      totalCart = totalCart + price;
+    }
+      var cartPrice = document.getElementById('total-price');
+      var finalPrice = 'Subtotal: ' + '$' + totalCart + '.00';
+
+      cartPrice.innerHTML = finalPrice;
+      */
+  };
+
 addRowToCart();
+renderCartPrice();
 });
